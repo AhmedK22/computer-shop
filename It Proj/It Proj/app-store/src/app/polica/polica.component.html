@@ -1,0 +1,114 @@
+<section class="container bg-light mt-5">
+  <div class="row">
+      <div class="container col-xl-12 col-lg-12 col-md-12 col-sm-12">
+        <div class="d-flex justify-content-between">
+          <div class="mt-5">
+            <h5 class="fw-bold text-decoration-underline">Smile.Compushop</h5>
+            <h5 class="text-decoration-underline">For Computer & IT-Solutions</h5>
+          </div>
+          <div class="mt-2">
+            <img src="assets/images/logoo.jpg" class="logoo">
+          </div>
+        </div>
+      </div>
+  </div>
+  <div class="row mt-3">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 table-responsive">
+        <table class="table table-bordered ">
+          <thead>
+            <tr >
+              <th scope="col">Date:</th>
+              <td colspan="3" scope="col">{{datee}}</td>
+              <td scope="col">582-023-297</td>
+              <td class="text-end" scope="col">: رقم التسجيل الضريبى</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th >Client:</th>
+              <td >{{client}}</td>
+              <td >{{td}}</td>
+              <td class="text-end">: ت.ض</td>
+              <td >430293</td>
+              <td class="text-end">: س.ت</td>
+            </tr>
+          </tbody>
+
+        </table>
+      </div>
+  </div>
+  <div class="row container text-center mb-5 mt-3">
+    <div class="row">
+      <div class="col align-self-center">
+        <div class="d-flex justify-content-evenly">
+          <div>
+            <h4 class="fw-bold">Invoice</h4>
+          </div>
+          <div>
+            <p>Invoice no : {{invoice}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="text-center row mt-3">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 table-responsive">
+      <table class="table table-bordered border-dark">
+        <thead>
+          <tr >
+            <th scope="col">Item</th>
+            <th scope="col">Qty</th>
+            <th scope="col">Model</th>
+            <th scope="col">Serial No</th>
+            <th scope="col">Price / unit</th>
+            <th scope="col">Total</th>
+            <th scope="col">Tax 14%</th>
+            <th scope="col">Total Price</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let data of datafordisplay">
+          <tr>
+            <td>{{data.name}}</td>
+            <td >{{data.noOfPieces}}</td>
+            <td>{{data.model}}<br>
+
+            <td>{{data.serial_no}}</td>
+            <td>{{data.price}}</td>
+            <td>{{data.price*data.noOfPieces}}</td>
+            <td>{{data.tax}}</td>
+            <td>{{(data.price*data.noOfPieces)+data.tax}}</td>
+          </tr>
+
+        </tbody>
+        <tfoot>
+          <tr>
+            <td>Total</td>
+            <td colspan="7">{{totalprice}}</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+</div>
+</section>
+
+<div class="mybtn w-100 ">
+
+  <div class=" mb-3 w-25">
+    <button (click)="print_second()" class="btn btn-dark  mt-4 w-100 ">print</button>
+  </div>
+  <div class=" mb-3 sellbtn w-25">
+    <button (click)="print()" class="btn btn-dark w-100  mt-4 ">Sell</button>
+  </div>
+  <div class=" mb-3 w-25 btnStore">
+    <button (click)="restoreData()" class="btn btn-dark w-100 mt-4 ">Restoe Data</button>
+  </div>
+
+  <div class=" mb-3 w-25 btnAddTotal">
+    <button (click)="backToAllPrpduct()" class="btn btn-dark w-100 mt-4 ">Back To All Product</button>
+  </div>
+</div>
+<!--   <tr class="table-active">
+            <td >Total</td>
+            <td colspan="6">سبعه وعشرون الفا وتسعمائه وواحد جنيها و 50 قرشا لا غير </td>
+            <td>27901.5</td>
+          </tr>-->

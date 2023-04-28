@@ -1,0 +1,72 @@
+<section class="firstsec">
+    <div class="container mt-5">
+        <div class="row justify-content-around">
+          <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 mb-3 bg-dark bg-opacity-50 p-3 rounded-3">
+            <app-filter></app-filter>
+          </div>
+           <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 ">
+            <form [formGroup]="myform" class="" (ngSubmit)="enterdata(myform)">
+                <div class="mb-3">
+                  <label class="form-label text-uppercase">Product Name</label>
+                  <input formControlName="name" [value]="display?.name" id="myname" type="text" class="form-control" >
+                  <div *ngIf="myform.controls.name.errors?.['required']&&myform.controls.name.touched">
+                   <small class="ms-2" style="color: red;">name is required*</small>
+                  </div>
+
+                </div>
+                <div class="mb-3">
+                  <label class="form-label text-uppercase">Serial_No</label>
+                  <input (keyup)="changevalue(myform)" formControlName="serial_no" [value]="display?.serial_no"  id="myserial" type="text" class="form-control" >
+                  <div *ngIf="myform.controls.serial_no.errors?.['required']&&myform.controls.serial_no.touched">
+                    <small class="ms-2" style="color: red;">serial is required*</small>
+                  </div>
+
+                </div>
+                <div class="mb-3">
+                  <label class="form-label text-uppercase">Product Model</label>
+                  <input [value]="display?.model" formControlName="model"  id="myname" type="text" class="form-control" >
+                  <div *ngIf="myform.controls.model.errors?.['required']&&myform.controls.model.touched">
+                    <small class="ms-2" style="color: red;">model is required*</small>
+                  </div>
+
+                </div>
+                <div class="mb-3">
+                  <label  class="form-label text-uppercase">Price</label>
+                  <input [value]="display?.price" formControlName="price" type="text" class="form-control" >
+                  <div *ngIf="myform.controls.price.errors?.['required']&&myform.controls.price.touched">
+                    <small class="ms-2" style="color: red;">price is required*</small>
+                  </div>
+                  <div *ngIf="myform.controls.price.errors?.['pattern']&&myform.controls.price.touched">
+                    <small class="ms-2" style="color: red;">price is must be number*</small>
+                  </div>
+                </div>
+
+                 <div class="mb-3">
+                    <label  class="form-label text-uppercase">Extra info</label>
+                    <input [value]="display?.info" formControlName="info" type="text" class="form-control" >
+                  </div>
+                  <div>
+                    <label  class="form-label text-uppercase">Category</label>
+                    <select [value]="display?.category" formControlName="category" class="form-select">
+
+                      <option value="LABTOP">LABTOP</option>
+                      <option  value="PC">PC</option>
+                      <option  value="HDD">HDD</option>
+                      <option  value="SSD">SSD</option>
+                    </select>
+                    <div *ngIf="myform.controls.category.errors?.['required']&&myform.controls.category.touched">
+                      <small class="ms-2" style="color: red;">category is required*</small>
+                    </div>
+                  </div>
+                  <div *ngIf="ability" class="d-flex  justify-content-center">
+                    <button  [disabled]="myform.invalid" type="submit" class="btn btn-dark w-25 mt-4 ">Submit</button>
+                  </div>
+                  <div *ngIf="ability2" class="d-flex  justify-content-center">
+                    <button   (click)="enterdata2()" class="btn btn-dark w-25 mt-4 ">Add Order</button>
+                  </div>
+                 </form>
+           </div>
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,123 @@
+<section class="firstsec mb-5">
+    <div class="container mt-5">
+        <div class="row justify-content-around">
+          <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 mb-3 bg-dark bg-opacity-50 p-3 rounded-3">
+            <app-filter></app-filter>
+          </div>
+           <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mt-5">
+            <form [formGroup]="myform" class="" >
+              <div class="mb-3">
+                <label class="form-label text-uppercase">Num Of Pieces</label>
+                <input formControlName="num" [value]="1"  id="myname" type="text" class="form-control" >
+              </div>
+              <div class="mb-3">
+                <label class="form-label text-uppercase">Product Name</label>
+                <input (keyup)="dataenter(myform)" formControlName="serial"  id="myserial" type="text" class="form-control" >
+                <div *ngIf="myform.controls.serial.errors?.['required']&&myform.controls.serial.touched">
+                  <small class="ms-2" style="color: red;">name is required*</small>
+                </div>
+
+              </div>
+              <div class="mb-3">
+                <label class="form-label text-uppercase">Client</label>
+                <input  formControlName="client"  type="text" class="form-control" >
+                <div *ngIf="myform.controls.client.errors?.['required']&&myform.controls.client.touched">
+                  <small class="ms-2" style="color: red;">client is required*</small>
+                </div>
+
+              </div>
+              <div class="mb-3">
+                <label class="form-label text-uppercase">التسجيل الضريبي</label>
+                <input  formControlName="td"  type="text" class="form-control" >
+                <div *ngIf="myform.controls.td.errors?.['required']&&myform.controls.td.touched">
+                  <small class="ms-2" style="color: red;">this field is required*</small>
+                </div>
+
+              </div>
+              <div class="mb-3">
+                <label class="form-label text-uppercase">invoice_no</label>
+                <input  formControlName="invoice"  type="text" class="form-control" >
+                <div *ngIf="myform.controls.invoice.errors?.['required']&&myform.controls.invoice.touched">
+                  <small class="ms-2" style="color: red;">invoice is required*</small>
+                </div>
+
+              </div>
+
+
+
+
+                <div *ngIf="msgOfCount">
+                  <small class="ms-2" style="color: red;">{{msgOfCount}}*</small>
+                </div>
+                <div *ngIf="msgOfChooseBefore">
+                  <small class="ms-2" style="color: red;">{{msgOfChooseBefore}}*</small>
+                </div>
+            <button class="btn btn-dark" [disabled]="myform.invalid" (click)="sell(myform)">Sell</button>
+            </form>
+
+           </div>
+        </div>
+
+    </div>
+</section>
+<!--2-->
+<section>
+  <div class="container">
+    <div class="row justify-content-center mb-3">
+      <div class="col-xl-10 col-lg-10 col-md-8 col-sm-6 text-dark mt-5 table-responsive">
+        <table class="table table-bordered border-dark">
+          <thead>
+            <tr class="table-active">
+              <th scope="col">#</th>
+              <th scope="col">ID</th>
+              <th scope="col">Qty</th>
+              <th scope="col">NAME</th>
+              <th scope="col">MODEL</th>
+              <th scope="col">PRICE</th>
+              <th scope="col">INFO</th>
+              <th scope="col">SERIAL</th>
+              <th scope="col">CATEGORY</th>
+
+              <th scope="col">REMOVE</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let mydata of data ;index as i">
+              <td #num>{{i+1}}</td>
+              <td #id>{{mydata.id}}</td>
+              <td >{{mydata.noOfPieces}}</td>
+              <td #name>{{mydata.name}}</td>
+              <td>{{mydata.model}}</td>
+              <td>{{mydata.price}}</td>
+              <td>{{mydata.info}}</td>
+              <td>{{mydata.serial_no}}</td>
+              <td>{{mydata.category}}</td>
+
+              <td><button type="button" class="btn btn-dark w-100 mb-1" (click)="removeele(num)">remove</button></td>
+            </tr>
+          </tbody>
+      </table>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-xl-10 col-lg-10 col-md-8 col-sm-6 text-dark mt-5 table-responsive">
+        <table *ngIf="appearx" class="table table-bordered border-dark">
+          <thead>
+            <tr class="table-active">
+              <th scope="col">serial</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let xx of x">
+              <th #id scope="row">{{xx}}</th>
+              <td #name>Not Exist</td>
+            </tr>
+          </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+

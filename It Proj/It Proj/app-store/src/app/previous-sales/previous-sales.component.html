@@ -1,0 +1,55 @@
+<section class="firstsec d-flex align-items-center">
+  <div class="container mt-5">
+    <div class="row ">
+      <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 mb-3 bg-dark bg-opacity-50 p-3 rounded-3">
+        <app-filter></app-filter>
+      </div>
+      <div class="col-xl-8 col-lg-8 col-md-6 col-sm-6 text-dark mt-5 table-responsive">
+        <table class="table table-bordered border-dark">
+          <thead>
+            <tr class="table-active">
+              <th scope="col">ID</th>
+              <th scope="col">NAME</th>
+              <th scope="col">MODEL</th>
+              <th scope="col">PRICE</th>
+
+              <th scope="col">CATEGORY</th>
+              <th scope="col">SERIAL</th>
+              <th scope="col">COUNT</th>
+              <th scope="col">CLIENT</th>
+              <th scope="col">التسجيل الضريبى</th>
+              <th scope="col">INVOICE_NO</th>
+              <th scope="col">DATE</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let mydata of result">
+              <th #id scope="row">{{mydata.id}}</th>
+              <td #name>{{mydata.name}}</td>
+              <td>{{mydata.model}}</td>
+              <td>{{mydata.price}}</td>
+
+              <td>{{mydata.category}}</td>
+              <td >{{mydata.serial_no}}</td>
+              <td >{{mydata.count}}</td>
+              <td >{{mydata.client}}</td>
+              <td >{{mydata.td}}</td>
+              <td >{{mydata.invoice}}</td>
+              <td >{{mydata.dateOfSales}}</td>
+            </tr>
+          </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="d-flex  justify-content-center mb-3">
+  <button (click)="deleteall()" type="submit" class="btn btn-dark w-25 mt-4 ">Delete All</button>
+</div>
+<div class="d-flex  justify-content-center mb-3">
+  <button (click)="totalmoney()" type="submit" class="btn btn-dark w-25 mt-4 MYBTN ">Total money</button>
+</div>
+<div *ngIf="moneyappear" class="w-50 bg-secondary bg-opacity-10 p-1 mx-auto rounded-2 mb-3">
+  <h3 class="text-center">Total Amount is: {{money}}</h3>
+</div>
+
